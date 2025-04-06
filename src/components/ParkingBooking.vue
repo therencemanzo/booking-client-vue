@@ -57,7 +57,12 @@ const handleBook = async (id) => {
     }finally{
 
     }
-    //router.push({ name: 'ParkingSpaceDetails', params: { id: id } })
+    router.push({ name: 'ParkingSpaceDetails', params: { id: id } })
+
+}
+
+const handlePriceDetails = (id) => {
+    router.push({ name: 'parkingSpacePriceDetails', params: { id: id, date_from : dateFrom.value, date_to : dateTo.value } })
 
 }
 
@@ -106,6 +111,7 @@ const handleBook = async (id) => {
                     <h1 class="mt-2 text-lg font-semibold text-gray-900 truncate">{{ parkingSpace.name }}</h1>
                     <p>{{ parkingSpace.price }}</p>
                     <button class="bg-indigo-600 hover:bg-indigo-200 cursor-pointer text-white p-2 mt-5 rounded-sm" @click.event="handleBook(parkingSpace.id)">Book now</button>
+                    <button class="bg-indigo-600 hover:bg-indigo-200 cursor-pointer text-white p-2 mt-5 rounded-sm" @click.event="handlePriceDetails(parkingSpace.id)">View details</button>
                 </div>
             </div>
         </div>

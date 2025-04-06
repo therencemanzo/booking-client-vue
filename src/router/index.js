@@ -6,6 +6,7 @@ import BookingsList from '../components/BookingList.vue'
 import { useAuthStore } from '../stores/auth'  // Add this import
 import BookingDetails from '../components/BookingDetails.vue'
 import UpdateBooking from '../components/UpdateBooking.vue'
+import ParkingPriceDetails from '../components/ParkingPriceDetails.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -23,6 +24,13 @@ const routes = [
     path: '/update-booking/:id', // the ':id' part will be passed as a parameter
     name: 'updateBooking',
     component: UpdateBooking,
+    props: true, // automatically pass the route params as props
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/parking-space-price-details/:id/:date_from/:date_to', // the ':id' part will be passed as a parameter
+    name: 'parkingSpacePriceDetails',
+    component: ParkingPriceDetails,
     props: true, // automatically pass the route params as props
     meta: { requiresAuth: true }
   },

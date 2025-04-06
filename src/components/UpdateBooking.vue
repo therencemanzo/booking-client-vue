@@ -24,6 +24,7 @@ onMounted(async() => {
 
     bookingDetails.value = response.data.data;
 
+    console.log(bookingDetails.value);
     dateFrom.value = bookingDetails.value.date_from;
     dateTo.value = bookingDetails.value.date_to;
 
