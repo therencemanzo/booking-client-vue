@@ -10,6 +10,7 @@ const dateFrom = ref('');
 const dateTo = ref('');
 const parkingSpaces = ref([]);
 const error = ref(null);
+const numberOfAvailabSpaces = ref(0);
 
 const handleSubmit = async () => {
   // Handle form submission logic here
@@ -25,6 +26,7 @@ const handleSubmit = async () => {
         });
 
         parkingSpaces.value = response.data.data;
+        numberOfAvailabSpaces.value = response.data.meta.total;
 
     }catch (er) {
         error.value = er.response.data.message
@@ -35,7 +37,7 @@ const handleSubmit = async () => {
   
 };
 
-const handleBook = async (id) => {
+const handleBook = async (id) => { 
 
     try{
 
@@ -98,7 +100,7 @@ const handleBook = async (id) => {
             </div>
         </div>
         <div class=" mx-auto max-w-4xl text-center mt-10" v-if="parkingSpaces.length > 0">
-            <p> Available Parking Spaces</p>
+            <p> {{numberOfAvailabSpaces }} Available Parking Spaces</p>
             <div class="mx-auto mt-16 grid grid-cols-5 gap-4" v-if="parkingSpaces.length > 0">
                 <div class="col-span-1 border rounded-sm p-3" v-for="parkingSpace in parkingSpaces" :key="parkingSpace.id">
                     <h1 class="mt-2 text-lg font-semibold text-gray-900 truncate">{{ parkingSpace.name }}</h1>
